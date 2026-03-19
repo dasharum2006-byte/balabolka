@@ -1,8 +1,208 @@
 body {
-    background-color:antiquewhite;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg, #f3e6e6, #d9b3b3);
+        perspective: 1200px;
+    }
+
+.cake-container {
+        transform-style: preserve-3d;
+        animation: rotate 10s infinite linear;
+        cursor: pointer;
+    }
+.cake {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        transform-style: preserve-3d;
+        transform: rotateX(10deg);
+    }
+
+        /* Нижний ярус */
+.layer1 {
+        position: absolute;
+        width: 300px;
+        height: 120px;
+        bottom: 0;
+        transform-style: preserve-3d;
+        }
+.layer1 .front, .layer1 .back,
+.layer1 .left, .layer1 .right {
+            position: absolute;
+            width: 300px;
+            height: 120px;
+            background: #8b4513;
+            border: 2px solid #5d3a1a;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+        }
+
+.layer1 .front {
+        transform: translateZ(150px);
+        background: linear-gradient(45deg, #8b4513, #a0522d);
+    }
+.layer1 .back {
+        transform: rotateY(180deg) translateZ(150px);
+        background: linear-gradient(45deg, #8b4513, #a0522d);
+    }
+
+.layer1 .left {
+        transform: rotateY(-90deg) translateZ(150px);
+        width: 300px;
+        background: linear-gradient(45deg, #5d3a1a, #8b4513);
+        }
+
+.layer1 .right {
+        transform: rotateY(90deg) translateZ(150px);
+        width: 300px;
+        background: linear-gradient(45deg, #5d3a1a, #8b4513);
+    }
+.layer1 .top {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: #d2691e;
+        transform: rotateX(90deg) translateZ(60px) translateY(150px);
+        border-radius: 50%;
+        box-shadow: inset 0 0 30px #8b4513;
+        }
+/* Второй ярус */
+.layer2 {
+        position: absolute;
+        width: 220px;
+        height: 100px;
+        bottom: 120px;
+        left: 40px;
+        transform-style: preserve-3d;
 }
-h1 {
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: medium;
+
+.layer2 .front, .layer2 .back,
+.layer2 .left, .layer2 .right {
+        position: absolute;
+        width: 220px;
+        height: 100px;
+        background: #f4a460;
+        border: 2px solid #d2691e;
 }
+.layer2 .front {
+        transform: translateZ(110px);
+        background: linear-gradient(45deg, #f4a460, #deb887);
+    }
+
+.layer2 .back {
+        transform: rotateY(180deg) translateZ(110px);
+    }
+
+.layer2 .left {
+        transform: rotateY(-90deg) translateZ(110px);
+        width: 220px;
+}
+
+.layer2 .right {
+        transform: rotateY(90deg) translateZ(110px);
+        width: 220px;
+}
+.layer2 .top {
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        background: #ffb6c1;
+        transform: rotateX(90deg) translateZ(50px) translateY(110px);
+        border-radius: 50%;
+}
+
+        /* Верхний ярус */
+.layer3 {
+        position: absolute;
+        width: 150px;
+        height: 80px;
+        bottom: 220px;
+        left: 75px;
+        transform-style: preserve-3d;
+}
+.layer3 .front, .layer3 .back,
+.layer3 .left, .layer3 .right {
+            position: absolute;
+            width: 150px;
+            height: 80px;
+            background: #fff0f5;
+            border: 2px solid #ffb6c1;
+        }
+
+.layer3 .front {
+            transform: translateZ(75px);
+        }
+
+.layer3 .back {
+            transform: rotateY(180deg) translateZ(75px);
+        }
+.layer3 .left {
+            transform: rotateY(-90deg) translateZ(75px);
+            width: 150px;
+        }
+
+.layer3 .right {
+            transform: rotateY(90deg) translateZ(75px);
+            width: 150px;
+        }
+
+.layer3 .top {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #ff69b4;
+            transform: rotateX(90deg) translateZ(40px) translateY(75px);
+            border-radius: 50%;
+        }
+/* Украшения */
+.cherry {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #8b0000;
+            border-radius: 50%;
+            bottom: 290px;
+            left: 135px;
+            transform: translateZ(80px);
+            box-shadow: 0 5px 0 #4a0000;
+        }
+.cherry::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            background: #228b22;
+            top: -15px;
+            left: 7px;
+            border-radius: 40% 40% 0 0;
+        }
+/* Кусочки для нажатия */
+.piece {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px dashed white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+.piece:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.1);
+        }
+.piece1 { bottom: 50px; left: 50px; }
+.piece2 { bottom: 50px; right: 50px; }
+.piece3 { top: 150px; left: 100px; }
+
+        @keyframes rotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+.piece-hidden {
+        opacity: 0;
+        pointer-events: none;
+        }

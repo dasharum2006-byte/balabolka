@@ -7,7 +7,45 @@
     <title>Заголовок страницы</title>
 </head>
 <body>
-    <h1>Привет, мир!</h1>
-    <p>Это содержание страницы.</p>
+    <div class="cake-container" id="cakeContainer">
+        <div class="cake">
+            <div class="layer1">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="top"></div>
+            </div>
+    <div class="layer2">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="top"></div>
+            </div>
+            
+    <div class="layer3">
+                <div class="front"></div>
+                <div class="back"></div>
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="top"></div>
+            </div>
+    <div class="cherry"></div>
+            
+            <!-- Кликабельные кусочки -->
+            <div class="piece piece1" onclick="this.classList.add('piece-hidden')"></div>
+            <div class="piece piece2" onclick="this.classList.add('piece-hidden')"></div>
+            <div class="piece piece3" onclick="this.classList.add('piece-hidden')"></div>
+        </div>
+    </div>
+<script>
+        // Вращение по клику
+        let rotating = true;
+        document.getElementById('cakeContainer').addEventListener('click', () => {
+            rotating = !rotating;
+            document.getElementById('cakeContainer').style.animationPlayState = rotating ? 'running' : 'paused';
+        });
+    </script>
 </body>
 </html>
